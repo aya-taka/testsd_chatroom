@@ -1,0 +1,52 @@
+{% load static swampdragon_tags %}
+<!DOCTYPE html>
+<html ng-app="TodoApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% verbatim %}
+<div ng-controller="TodoListCtrl">
+    <input type="number" ng-model="room.number"/>
+    <button type="button" ng-click="setRoomId(room)">
+        <div ng-bind="'go'"></div>
+    </button>
+
+    <ul>
+        <div ng-bind="todoList.name"></div>
+        <div></div>
+        <div ng-bind="todoList.des"></div>
+        <li ng-repeat="item in todoItems" ng-if="item.room == roomId && resistRoomList.is_read">
+            <button type="button" ng-click="datadelete(item)" ng-bind="item.text"></button>
+        </li>
+    </ul>
+        <div></div>
+        <input type="text" ng-model="data.text"/>
+        <button type="button" ng-click="dataadd(data)">
+            <div ng-bind="'add'"></div>
+        </button>
+
+        <div><input type="text" ng-model="roomname.text"/></div>
+        <div><input type="text" ng-model="roomdes.text"/></div>
+        <button type="button" ng-click="datacreate(roomname, roomdes)">
+            <div ng-bind="'create'"></div>
+        </button>
+    </li>
+</div>
+{% endverbatim %}
+
+<!-- AngularJS -->
+<script type="text/javascript" src="{% static 'angular.js' %}"></script>
+
+{% swampdragon_settings %}
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/datamapper.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/angular/services.js' %}"></script>
+
+<!-- To-do app -->
+<script type="text/javascript" src="{% static 'chat/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'chat/controllers.js' %}"></script>
+
+</body>
+</html>
